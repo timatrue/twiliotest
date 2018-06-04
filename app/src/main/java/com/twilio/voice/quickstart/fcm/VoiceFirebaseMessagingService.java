@@ -29,7 +29,9 @@ import java.util.Map;
 public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "VoiceFCMService";
+    //private static final String NOTIFICATION_ID_KEY = "NOTIFICATION_ID";
     private static final String NOTIFICATION_ID_KEY = "NOTIFICATION_ID";
+    //private static final String CALL_SID_KEY = "CALL_SID";
     private static final String CALL_SID_KEY = "CALL_SID";
     private static final String VOICE_CHANNEL = "default";
 
@@ -158,6 +160,7 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
         intent.putExtra(VoiceActivity.INCOMING_CALL_NOTIFICATION_ID, notificationId);
         intent.putExtra(VoiceActivity.INCOMING_CALL_INVITE, callInvite);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.startActivity(intent);
     }
 
