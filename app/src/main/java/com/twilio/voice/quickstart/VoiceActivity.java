@@ -34,6 +34,8 @@ import android.view.WindowManager;
 import android.widget.Chronometer;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -47,6 +49,8 @@ import com.twilio.voice.Voice;
 import java.util.HashMap;
 
 public class  VoiceActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     private static final String TAG = "VoiceActivity";
     private static String identity = "alice";
@@ -100,6 +104,8 @@ public class  VoiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice);
+
+        mAuth = FirebaseAuth.getInstance();
 
         // These flags ensure that the activity can be launched when the screen is locked.
         Window window = getWindow();
@@ -157,6 +163,21 @@ public class  VoiceActivity extends AppCompatActivity {
             requestPermissionForMicrophone();
         } else {
             retrieveAccessToken();
+        }
+    }
+
+    /*When initializing your Activity, check to see if the user is currently signed in.*/
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if(currentUser == null) {
+
+            Intent authIntent = new Intent(VoiceActivity.this, AuthActivity.class);
+            startActivity(authIntent);
+            finish();
         }
     }
 

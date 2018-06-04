@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/phoneHLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:id="@+id/phoneInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:hint="Your Phone number"
+            android:inputType="phone" />
+
+        <ProgressBar
+            android:id="@+id/phoneProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="37dp"
+            android:layout_height="35dp"
+
+            android:layout_alignParentTop="true"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/codeHLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="65dp"
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
+
+        <EditText
+            android:id="@+id/codeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:hint="Verification code"
+            android:inputType="number" />
+
+        <ProgressBar
+            android:id="@+id/codeProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="37dp"
+            android:layout_height="35dp"
+
+            android:layout_alignParentTop="true" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/verifyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="14dp"
+        android:text="Send Verification" />
+
+
+</RelativeLayout>
