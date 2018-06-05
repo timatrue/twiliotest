@@ -53,7 +53,7 @@ public class  VoiceActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private static final String TAG = "VoiceActivity";
-    private static String identity = "alice";
+    private static String identity = "bob";
     /*
      * You must provide the URL to the publicly accessible Twilio access token server route
      *
@@ -63,7 +63,7 @@ public class  VoiceActivity extends AppCompatActivity {
      *
      * For example : https://myurl.io/accessToken.php
      */
-    private static final String TWILIO_ACCESS_TOKEN_SERVER_URL = "http://ada4af00.ngrok.io/accessToken";
+    private static final String TWILIO_ACCESS_TOKEN_SERVER_URL = "http://594e18c5.ngrok.io/accessToken";
 
     private static final int MIC_PERMISSION_REQUEST_CODE = 1;
     private static final int SNACKBAR_DURATION = 4000;
@@ -551,6 +551,13 @@ public class  VoiceActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            /*ADDED SIGN OUT*/
+            case R.id.logout_menu_item:
+                mAuth.signOut();
+                Intent authIntent = new Intent(VoiceActivity.this, AuthActivity.class);
+                startActivity(authIntent);
+                finish();
+
             case R.id.speaker_menu_item:
                 if (audioManager.isSpeakerphoneOn()) {
                     audioManager.setSpeakerphoneOn(false);
@@ -604,4 +611,6 @@ public class  VoiceActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

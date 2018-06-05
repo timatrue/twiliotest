@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:theme="@style/AppTheme">
 
     <LinearLayout
         android:id="@+id/phoneHLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+
+            app:elevation="0dp"
+            android:src="@drawable/ic_phone_black_24dp"
+            android:visibility="visible"
+            app:backgroundTint="#fff"
+            tools:borderWidth="0dp" />
 
         <EditText
             android:id="@+id/phoneInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_alignParentTop="true"
+
+            android:layout_margin="2dp"
             android:ems="10"
             android:hint="Your Phone number"
             android:inputType="phone" />
@@ -26,40 +43,56 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="37dp"
             android:layout_height="35dp"
-
             android:layout_alignParentTop="true"
+
+            android:layout_margin="2dp"
             android:visibility="invisible" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/codeHLayout"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_alignParentTop="true"
         android:layout_marginTop="65dp"
+
+        android:gravity="center"
         android:orientation="horizontal"
         android:visibility="invisible">
 
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:src="@drawable/ic_lock_outline_black_24dp"
+            android:visibility="visible"
+            app:elevation="0dp"
+            app:backgroundTint="#fff"
+             />
 
         <EditText
             android:id="@+id/codeInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_alignParentTop="true"
+
+            android:layout_margin="2dp"
             android:ems="10"
             android:hint="Verification code"
-            android:inputType="number" />
+            android:inputType="number"
+            android:visibility="visible" />
 
         <ProgressBar
             android:id="@+id/codeProgressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="37dp"
             android:layout_height="35dp"
+            android:layout_alignParentTop="true"
 
-            android:layout_alignParentTop="true" />
+            android:layout_margin="2dp"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
@@ -70,7 +103,23 @@
         android:layout_alignParentBottom="true"
 
         android:layout_marginBottom="14dp"
-        android:text="Send Verification" />
+        android:background="#11365A"
+        android:text="Send Verification"
+        android:textColor="#fff" />
+
+    <EditText
+        android:id="@+id/errorMsg"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="139dp"
+
+        android:text="There is smth wrong with code"
+        android:textColor="@color/colorPrimary"
+        android:textColorLink="@color/colorPrimary"
+        android:background="@null"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

@@ -8,4 +8,9 @@
         android:icon="@drawable/ic_volume_up_white_24dp"
         app:showAsAction="ifRoom"/>
 
+    <item android:id="@+id/logout_menu_item"
+        android:title="@string/logout"
+        android:icon="@drawable/ic_input_black_24dp"
+        app:showAsAction="ifRoom"/>
+
 </menu>
