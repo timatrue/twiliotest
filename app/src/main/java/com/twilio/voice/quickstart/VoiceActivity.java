@@ -167,6 +167,7 @@ public class  VoiceActivity extends AppCompatActivity {
     }
 
     /*When initializing your Activity, check to see if the user is currently signed in.*/
+   /*
     @Override
     public void onStart() {
         super.onStart();
@@ -180,7 +181,7 @@ public class  VoiceActivity extends AppCompatActivity {
             finish();
         }
     }
-
+*/
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);

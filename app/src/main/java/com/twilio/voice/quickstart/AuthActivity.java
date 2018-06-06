@@ -42,6 +42,7 @@ public class AuthActivity extends AppCompatActivity {
     private ProgressBar mCodeBar;
 
     private Button mVerifyBtn;
+    private String mVerifyType = "phone";
 
     private FirebaseAuth mAuth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
@@ -69,57 +70,69 @@ public class AuthActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+
+
         mVerifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mPhoneBar.setVisibility(View.VISIBLE);
-                mPhoneText.setEnabled(false);
-                mVerifyBtn.setEnabled(false);
+                if(mVerifyType == "phone") {
+                    mPhoneBar.setVisibility(View.VISIBLE);
+                    mPhoneText.setEnabled(false);
+                    mVerifyBtn.setEnabled(false);
 
-                String phoneNumber = mPhoneText.getText().toString();
+                    String phoneNumber = mPhoneText.getText().toString();
 
+                    PhoneAuthProvider.getInstance()
+                            .verifyPhoneNumber(phoneNumber, 60, TimeUnit.SECONDS, AuthActivity.this, mCallbacks );
+                } else {
+                    mVerifyBtn.setEnabled(false);
+                    mCodeBar.setVisibility(View.VISIBLE);
 
-                mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                    @Override
-                    public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-                        Log.d(TAG,"onVerificationCompleted");
-                        signInWithPhoneAuthCredential(phoneAuthCredential);
-                    }
-
-                    @Override
-                    public void onVerificationFailed(FirebaseException e) {
-
-                        Log.w(TAG, "onVerificationFailed", e);
-                        mErrorMsg.setText("Is phone number correct ?");
-                        mErrorMsg.setVisibility(View.VISIBLE);
-
-                    }
-
-                    @Override
-                    public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
-                        // The SMS verification code has been sent to the provided phone number, we
-                        // now need to ask the user to enter the code and then construct a credential
-                        // by combining the code with a verification ID.
-                        Log.d(TAG, "onCodeSent:" + verificationId);
-
-                        // Save verification ID and resending token so we can use them later
-                        mVerificationId = verificationId;
-                        mResendToken = token;
-
-                        mPhoneBar.setVisibility(View.INVISIBLE);
-                        mCodeLayout.setVisibility(View.VISIBLE);
-
-                        mVerifyBtn.setText("Verify code");
-
-                        // ...
-                    }
-                };
-
-                PhoneAuthProvider.getInstance()
-                        .verifyPhoneNumber(phoneNumber, 60, TimeUnit.SECONDS, AuthActivity.this, mCallbacks );
+                    String verificationCode = mCodeText.getText().toString();
+                    PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, verificationCode);
+                    signInWithPhoneAuthCredential(credential);
+                }
             }
         });
+
+        mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            @Override
+            public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+                Log.d(TAG,"onVerificationCompleted");
+                signInWithPhoneAuthCredential(phoneAuthCredential);
+            }
+
+            @Override
+            public void onVerificationFailed(FirebaseException e) {
+
+                Log.w(TAG, "onVerificationFailed", e);
+                mErrorMsg.setText("Is phone number correct ?");
+                mErrorMsg.setVisibility(View.VISIBLE);
+
+            }
+
+            @Override
+            public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
+                // The SMS verification code has been sent to the provided phone number, we
+                // now need to ask the user to enter the code and then construct a credential
+                // by combining the code with a verification ID.
+                Log.d(TAG, "onCodeSent:" + verificationId);
+
+                // Save verification ID and resending token so we can use them later
+                mVerificationId = verificationId;
+                mResendToken = token;
+
+                mVerifyType = "code";
+
+                mPhoneBar.setVisibility(View.INVISIBLE);
+                mCodeLayout.setVisibility(View.VISIBLE);
+
+                mVerifyBtn.setText("Verify code");
+                mVerifyBtn.setEnabled(true);
+                // ...
+            }
+        };
 
     }
 

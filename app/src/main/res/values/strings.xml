@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Voice Quickstart</string>
+    <string name="app_name">Sporty</string>
     <string name="turn_speaker_on">Speaker ON</string>
     <string name="logout">Logout</string>
     <string name="callee">client identity or phone number</string>

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#f10028</color>
+   <!-- <color name="colorPrimary">#f10028</color>
     <color name="colorPrimaryDark">#a3090e</color>
-    <color name="colorAccent">#b0bec5</color>
+    <color name="colorAccent">#b0bec5</color>-->
+
+ <!--cote d'azur style-->
+    <color name="colorPrimary">#009494</color>
+    <color name="colorPrimaryDark">#00585E</color>
+    <color name="colorAccent">#F5F2DC</color>
+    <color name="colorText">#454445</color>
+    <color name="colorError">#FF5729</color>
+
+
+
 </resources>
