@@ -107,7 +107,7 @@ public class AuthActivity extends AppCompatActivity {
             public void onVerificationFailed(FirebaseException e) {
 
                 Log.w(TAG, "onVerificationFailed", e);
-                mErrorMsg.setText("Is phone number correct ?");
+                mErrorMsg.setText(R.string.error_auth_phone);
                 mErrorMsg.setVisibility(View.VISIBLE);
 
             }
@@ -128,7 +128,7 @@ public class AuthActivity extends AppCompatActivity {
                 mPhoneBar.setVisibility(View.INVISIBLE);
                 mCodeLayout.setVisibility(View.VISIBLE);
 
-                mVerifyBtn.setText("Verify code");
+                mVerifyBtn.setText(R.string.auth_send_btn_code);
                 mVerifyBtn.setEnabled(true);
                 // ...
             }
@@ -154,7 +154,7 @@ public class AuthActivity extends AppCompatActivity {
 
                         } else {
                             // Sign in failed, display a message and update the UI
-                            mErrorMsg.setText("There was some error with log in");
+                            mErrorMsg.setText(R.string.error_auth_code);
                             mErrorMsg.setVisibility(View.VISIBLE);
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {

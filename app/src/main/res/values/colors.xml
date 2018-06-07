@@ -4,13 +4,19 @@
     <color name="colorPrimaryDark">#a3090e</color>
     <color name="colorAccent">#b0bec5</color>-->
 
- <!--cote d'azur style-->
+ <!--cote d'azur style
     <color name="colorPrimary">#009494</color>
     <color name="colorPrimaryDark">#00585E</color>
     <color name="colorAccent">#F5F2DC</color>
     <color name="colorText">#454445</color>
-    <color name="colorError">#FF5729</color>
+    <color name="colorError">#FF5729</color>-->
+ <!--abstract style-->
 
-
-
+ <color name="colorPrimary">#39A5D9</color>
+ <color name="colorPrimaryDark">#17668C</color>
+ <color name="colorAccent">#F5F2DC</color>
+ <color name="colorDarkGrey">#454445</color>
+ <color name="colorWhite">#fff</color>
+ <color name="colorError">#ED5667</color>
+ <color name="colorText">#454445</color>
 </resources>

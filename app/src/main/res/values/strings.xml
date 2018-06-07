@@ -1,7 +1,19 @@
 <resources>
     <string name="app_name">Sporty</string>
+    <string name="app_hashtag">#IMPHENOMENAL</string>
     <string name="turn_speaker_on">Speaker ON</string>
     <string name="logout">Logout</string>
     <string name="callee">client identity or phone number</string>
     <string name="callHint">Dial a client name or phone number. Leaving the field empty results in an automated response.</string>
+
+    <!--Auth errors-->
+    <string name="error_auth_phone">Is phone number correct ?</string>
+    <string name="error_auth_code">Is code correct ?</string>
+    <string name="error_auth_default">Something went wrong</string>
+    <!--Auth logic-->
+    <string name="auth_hint_phone">Your Phone number</string>
+    <string name="auth_hint_code">Verification code</string>
+    <string name="auth_send_btn_phone">Send Verification</string>
+    <string name="auth_send_btn_code">Verify code</string>
+
 </resources>

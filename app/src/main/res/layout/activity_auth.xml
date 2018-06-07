@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sea"
+
     android:orientation="vertical"
     android:theme="@style/AppTheme">
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/abstract5" />
 
     <LinearLayout
         android:id="@+id/phoneHLayout"
@@ -34,11 +39,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:textColor="@color/colorText"
             android:layout_margin="2dp"
             android:ems="10"
-            android:hint="Your Phone number"
-            android:inputType="phone" />
+            android:fontFamily="@font/inconsolata"
+            android:hint="@string/auth_hint_phone"
+            android:inputType="phone"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite" />
 
         <ProgressBar
             android:id="@+id/phoneProgressBar"
@@ -71,7 +78,7 @@
             android:src="@drawable/ic_lock_outline_black_24dp"
             android:visibility="visible"
             app:elevation="0dp"
-            app:backgroundTint="#fff"
+            app:backgroundTint="@color/colorWhite"
              />
 
         <EditText
@@ -79,11 +86,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:textColor="@color/colorText"
             android:layout_margin="2dp"
             android:ems="10"
-            android:hint="Verification code"
+            android:fontFamily="@font/inconsolata"
+            android:hint="@string/auth_hint_code"
             android:inputType="number"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             android:visibility="visible" />
 
         <ProgressBar
@@ -104,23 +113,40 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
 
-        android:layout_marginBottom="14dp"
-        android:background="#009494"
-        android:text="Send Verification"
-        android:textColor="#F5F2DC" />
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/inconsolata"
+        android:text="@string/auth_send_btn_phone"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/errorMsg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="211dp"
+        android:layout_below="@+id/codeHLayout"
         android:background="@drawable/rect_rounded"
+        android:fontFamily="@font/inconsolata"
         android:gravity="center"
-        android:text="Wrong code"
-        android:textColor="#FF5729"
+        android:text="@string/error_auth_default"
+        android:textColor="@color/colorError"
+        android:textSize="18sp"
         android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/verifyButton"
+        android:layout_alignParentStart="true"
+        android:ems="10"
+        android:fontFamily="@font/inconsolata"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/app_hashtag"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp" />
 
 
 </RelativeLayout>
