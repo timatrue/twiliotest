@@ -33,6 +33,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,6 +43,8 @@ import com.koushikdutta.ion.Ion;
 import com.twilio.voice.Call;
 import com.twilio.voice.CallException;
 import com.twilio.voice.CallInvite;
+import com.twilio.voice.LogLevel;
+import com.twilio.voice.LogModule;
 import com.twilio.voice.RegistrationException;
 import com.twilio.voice.RegistrationListener;
 import com.twilio.voice.Voice;
@@ -53,7 +56,8 @@ public class  VoiceActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private static final String TAG = "VoiceActivity";
-    private static String identity = "bob";
+    private String identity = "alice";
+    private TextView deviceName;
     /*
      * You must provide the URL to the publicly accessible Twilio access token server route
      *
@@ -63,7 +67,7 @@ public class  VoiceActivity extends AppCompatActivity {
      *
      * For example : https://myurl.io/accessToken.php
      */
-    private static final String TWILIO_ACCESS_TOKEN_SERVER_URL = "http://594e18c5.ngrok.io/accessToken";
+    private static final String TWILIO_ACCESS_TOKEN_SERVER_URL = "http://d241a326.ngrok.io/accessToken";
 
     private static final int MIC_PERMISSION_REQUEST_CODE = 1;
     private static final int SNACKBAR_DURATION = 4000;
@@ -104,6 +108,14 @@ public class  VoiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice);
+
+        /********************DEBUG*****************/
+        Voice.setLogLevel(LogLevel.DEBUG);
+        Voice.setModuleLogLevel(LogModule.PJSIP, LogLevel.DEBUG);
+        /*****************************************/
+
+        deviceName = (TextView) findViewById(R.id.deviceName);
+        deviceName.setText(identity);
 
         mAuth = FirebaseAuth.getInstance();
 

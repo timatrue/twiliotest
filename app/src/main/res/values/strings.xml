@@ -5,6 +5,7 @@
     <string name="logout">Logout</string>
     <string name="callee">client identity or phone number</string>
     <string name="callHint">Dial a client name or phone number. Leaving the field empty results in an automated response.</string>
+    <!--Voice activity -->
 
     <!--Auth errors-->
     <string name="error_auth_phone">Is phone number correct ?</string>
